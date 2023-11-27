@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Advent 2023</title>
+  <link rel="stylesheet" href="/static/style.css" />
+  <link rel="icon" type="image/x-icon" href="/static/favicon.ico" />
+</head>
+
+<body>
+  <h1>Naughty Snazzle Big Advent Extravaganza 2023</h1>
+  <ul id="calendar">
+    {{ range . }}
+    <li>
+      <article data-placement="{{ .Placement }}">
+        {{ .Day }}
+      </article>
+    </li>
+    {{ end }}
+  </ul>
+</body>
+
+</html>

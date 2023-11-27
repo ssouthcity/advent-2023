@@ -1,0 +1,58 @@
+body {
+  background-image: url("/static/img/starry-night-sky.avif");
+  background-size: cover 100vh;
+  background-origin: center center;
+
+  padding-inline: min(256px, 10%);
+}
+
+h1 {
+  font-size: 3rem;
+  font-family: "Comic Sans MS", "Comic Sans", cursive;
+  text-decoration: wavy underline red;
+  color: white;
+}
+
+ul#calendar {
+  list-style: none;
+  padding-left: 0;
+
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); 
+  gap: 4em;
+}
+
+ul#calendar li {
+  /* background: green; */
+  aspect-ratio: 1;
+
+  display: flex;
+}
+
+ul#calendar article {
+  width: 80%;
+  aspect-ratio: 1;
+  background: red;
+
+  font-size: 2.5em;
+  font-style: bold;
+
+  display: grid;
+  place-items: center;
+}
+
+ul#calendar article[data-placement~="top"] {
+  margin-bottom: auto;
+}
+
+ul#calendar article[data-placement~="bottom"] {
+  margin-top: auto;
+}
+
+ul#calendar article[data-placement~="left"] {
+  margin-right: auto;
+}
+
+ul#calendar article[data-placement~="right"] {
+  margin-left: auto;
+}
