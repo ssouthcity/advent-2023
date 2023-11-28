@@ -1,0 +1,20 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: advent-2023
+  annotations:
+    kubernetes.io/ingress.global-static-ip-name: advent-2023-ip
+  labels:
+    app: advent-2023
+spec:
+  rules:
+    - host: "advent.southcity.dev"
+      http:
+        paths:
+          - path: /*
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: advent-2023-service
+                port:
+                  number: 80
