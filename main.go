@@ -76,22 +76,18 @@ type Window struct {
 func serveCalendar(w http.ResponseWriter, r *http.Request) {
 	t := template.Must(template.ParseFiles("templates/index.html"))
 
-	placements := []string{
-		"top left",
-		"top right",
-		"bottom left",
-		"bottom right",
-	}
-
 	windows := make([]Window, 24)
 	for i := 0; i < 24; i++ {
 		windows[i] = Window{
-			Day:       i + 1,
-			Intro:     fmt.Sprintf("/audio/%02d-intro.mp3", i+1),
-			Song:      fmt.Sprintf("/audio/%02d-song.mp3", i+1),
-			Placement: placements[rand.Intn(len(placements))],
+			Day:   i + 1,
+			Intro: fmt.Sprintf("/audio/%02d-intro.mp3", i+1),
+			Song:  fmt.Sprintf("/audio/%02d-song.mp3", i+1),
 		}
 	}
+
+	seed := RequestSeed(w, r)
+	personalRand := rand.New(rand.NewSource(seed))
+	ShuffleWindows(personalRand, windows)
 
 	pageData := CalendarPageData{
 		Title:   "Hello World",
