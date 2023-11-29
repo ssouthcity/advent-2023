@@ -67,21 +67,30 @@ type CalendarPageData struct {
 }
 
 type Window struct {
-	Day       int
-	Intro     string
-	Song      string
-	Placement string
+	Day        int
+	Intro      string
+	Song       string
+	IsOpenable bool
 }
 
 func serveCalendar(w http.ResponseWriter, r *http.Request) {
 	t := template.Must(template.ParseFiles("templates/index.html"))
 
+	loc, err := time.LoadLocation("Europe/Oslo")
+	if err != nil {
+		slog.Error("unable to load Oslo time zone", slog.Any("err", err))
+	}
+
+	today := time.Now().In(loc).Day()
+	today = 3
+
 	windows := make([]Window, 24)
 	for i := 0; i < 24; i++ {
 		windows[i] = Window{
-			Day:   i + 1,
-			Intro: fmt.Sprintf("/audio/%02d-intro.mp3", i+1),
-			Song:  fmt.Sprintf("/audio/%02d-song.mp3", i+1),
+			Day:        i + 1,
+			Intro:      fmt.Sprintf("/audio/%02d-intro.mp3", i+1),
+			Song:       fmt.Sprintf("/audio/%02d-song.mp3", i+1),
+			IsOpenable: today >= i+1,
 		}
 	}
 
@@ -94,7 +103,7 @@ func serveCalendar(w http.ResponseWriter, r *http.Request) {
 		Windows: windows,
 	}
 
-	err := t.Execute(w, pageData)
+	err = t.Execute(w, pageData)
 	if err != nil {
 		slog.Error("unable to execute the template",
 			slog.Any("err", err),
