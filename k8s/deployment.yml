@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
         - name: advent-2023-container
-          image: ssouthcity/advent-event-2023:main
+          image: ssouthcity/advent-event-2023:latest
           ports:
             - containerPort: 80
