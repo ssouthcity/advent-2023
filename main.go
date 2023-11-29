@@ -61,6 +61,11 @@ func blockOnDatePrefix(loc *time.Location, handler http.Handler) http.Handler {
 	})
 }
 
+type CalendarPageData struct {
+	Title   string
+	Windows []Window
+}
+
 type Window struct {
 	Day       int
 	Intro     string
@@ -88,7 +93,12 @@ func serveCalendar(w http.ResponseWriter, r *http.Request) {
 		}
 	}
 
-	err := t.Execute(w, windows)
+	pageData := CalendarPageData{
+		Title:   "Hello World",
+		Windows: windows,
+	}
+
+	err := t.Execute(w, pageData)
 	if err != nil {
 		slog.Error("unable to execute the template",
 			slog.Any("err", err),

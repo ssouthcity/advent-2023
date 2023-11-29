@@ -5,21 +5,42 @@
   <title>Advent 2023</title>
   <link rel="stylesheet" href="/static/style.css" />
   <link rel="icon" type="image/x-icon" href="/static/favicon.ico" />
+  <script defer src="/static/js/music.js"></script>
 </head>
 
 <body>
-  <h1>Naughty Snazzle Big Advent Extravaganza 2023</h1>
-  <ul id="calendar">
-    {{ range . }}
-    <li>
-      <article data-placement="{{ .Placement }}">
-        {{ .Day }}
-        <audio controls src="{{ .Intro }}" preload="none"></audio>
-        <audio controls src="{{ .Song }}" preload="none"></audio>
+  <header>
+    <h1>{{ .Title }}</h1>
+  </header>
+
+  <main class="calendar">
+    {{ range .Windows }}
+    <label>
+      <input type="checkbox" style="display: none" />
+      <article title="{{ .Day }}" class="window">
+        <div class="door">
+          <h2>{{ .Day }}</h2>
+        </div>
+        <button data-play="{{ .Intro }}">
+          Intro
+        </button>
+        <button data-play="{{ .Song }}">
+          Song
+        </button>
       </article>
-    </li>
+    </label>
     {{ end }}
-  </ul>
+  </main>
+
+  <aside id="audio-player">
+    <audio controls>
+    </audio>
+  </aside>
+
+  <footer>
+    <p>Sponsored by the shadow government</p>
+  </footer>
+
 </body>
 
 </html>
