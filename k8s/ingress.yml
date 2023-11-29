@@ -4,17 +4,13 @@ metadata:
   name: advent-2023
   annotations:
     kubernetes.io/ingress.global-static-ip-name: advent-2023-ip
+    networking.gke.io/managed-certificates: advent-2023-cert
+    kubernetes.io/ingress.class: "gce"
   labels:
     app: advent-2023
 spec:
-  rules:
-    - host: "advent.southcity.dev"
-      http:
-        paths:
-          - path: /*
-            pathType: ImplementationSpecific
-            backend:
-              service:
-                name: advent-2023-service
-                port:
-                  number: 80
+  defaultBackend:
+    service:
+      name: advent-2023-service
+      port:
+        number: 8080
