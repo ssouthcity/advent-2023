@@ -6,6 +6,7 @@
   <link rel="stylesheet" href="/static/style.css" />
   <link rel="icon" type="image/x-icon" href="/static/favicon.ico" />
   <script defer src="/static/js/music.js"></script>
+  <script defer src="/static/js/persistence.js"></script>
 </head>
 
 <body>
@@ -16,7 +17,7 @@
   <main class="calendar">
     {{ range .Windows }}
     <label>
-      <input type="checkbox" style="display: none" />
+      <input type="checkbox" data-day="{{ .Day }}" {{ if not .IsOpenable }}disabled{{ end }} style="display: none" />
       <article title="{{ .Day }}" class="window">
         <div class="door">
           <h2>{{ .Day }}</h2>
