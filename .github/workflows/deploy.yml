@@ -35,27 +35,29 @@ jobs:
           push: true
           tags: ${{ steps.metadata.outputs.tags }}
           labels: ${{ steps.metadata.outputs.labels }}
-  # deploy:
-  #   name: Deploy K8s infra and pull new image
-  #   runs-on: ubuntu-latest
-  #   needs: build
-  #   steps:
-  #     - name: Checkout
-  #       uses: actions/checkout@v4
 
-  #     - name: Setup Kubectl
-  #       uses: Azure/setup-kubectl@v2.0
+  deploy:
+    name: Deploy K8s infra and pull new image
+    runs-on: ubuntu-latest
+    needs: build
+    permissions:
+      contents: 'read'
+      id-token: 'write'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
 
-  #     - name: Set K8s context
-  #       uses: Azure/k8s-set-context@v3
-  #       with:
-  #         method: kubeconfig
-  #         kubeconfig: ${{ secrets.KUBE_CONFIG }}
+      - id: Authenticate to Gcloud
+        uses: 'google-github-actions/auth@v1'
+        with:
+          workload_identity_provider: 'projects/695182653196/locations/global/workloadIdentityPools/github/providers/advent-2023'
 
-  #     - name: Deploy K8s resources
-  #       uses: Azure/k8s-deploy@v4
-  #       with:
-  #         action: deploy
-  #         manifests: k8s/
-  #         images: |
-  #           ssouthcity/advent-event-2023:${{ github.sha }}
+      - name: Retrieve Gcloud credentials
+        uses: 'google-github-actions/get-gke-credentials@v1'
+        with:
+          cluster_name: 'autopilot-cluster-1'
+          location: 'europe-central2'
+
+      - name: Deploy K8s resources
+        run: |
+          kubectl apply -f k8s/

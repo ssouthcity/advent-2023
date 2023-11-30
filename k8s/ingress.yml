@@ -6,6 +6,7 @@ metadata:
     kubernetes.io/ingress.global-static-ip-name: advent-2023-ip
     networking.gke.io/managed-certificates: advent-2023-cert
     kubernetes.io/ingress.class: "gce"
+    networking.gke.io/v1beta1.FrontendConfig: "http-to-https"
   labels:
     app: advent-2023
 spec:
