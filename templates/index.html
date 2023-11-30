@@ -20,22 +20,24 @@
 
   <main class="container calendar">
     {{ range .Windows }}
-    <label title="{{ .Day }}" class="window">
-      <input type="checkbox" data-day="{{ .Day }}" {{ if not .IsOpenable }}disabled{{ end }} style="display: none" />
-      <div class="door">
-        <div class="front">
-          <h2>{{ .Day }}</h2>
+    <div style="padding: {{ .Margin }}">
+      <label title="{{ .Day }}" class="window">
+        <input type="checkbox" data-day="{{ .Day }}" {{ if not .IsOpenable }}disabled{{ end }} style="display: none" />
+        <div class="door">
+          <div class="front">
+            <h2>{{ .Day }}</h2>
+          </div>
+          <div class="back"></div>
         </div>
-        <div class="back"></div>
-      </div>
-      <h2>{{ .Day }}</h2>
-      <button data-play="{{ .Intro }}" {{ if not .IsOpenable }}disabled{{ end }}>
-        Intro
-      </button>
-      <button data-play="{{ .Song }}" {{ if not .IsOpenable }}disabled{{ end }}>
-        Song
-      </button>
-    </label>
+        <h2>{{ .Day }}</h2>
+        <button data-play="{{ .Intro }}" {{ if not .IsOpenable }}disabled{{ end }}>
+          Intro
+        </button>
+        <button data-play="{{ .Song }}" {{ if not .IsOpenable }}disabled{{ end }}>
+          Song
+        </button>
+      </label>
+    </div>
     {{ end }}
   </main>
 

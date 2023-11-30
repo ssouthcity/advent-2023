@@ -70,6 +70,7 @@ type Window struct {
 	Day        int
 	Intro      string
 	Song       string
+	Margin     string
 	IsOpenable bool
 }
 
@@ -84,18 +85,25 @@ func serveCalendar(w http.ResponseWriter, r *http.Request) {
 	today := time.Now().In(loc).Day()
 	today = 3
 
+	seed := RequestSeed(w, r)
+	personalRand := rand.New(rand.NewSource(seed))
+
 	windows := make([]Window, 24)
 	for i := 0; i < 24; i++ {
+		var margin string
+		for _, side := range RandomMargin(personalRand) {
+			margin += fmt.Sprintf("%d%% ", side)
+		}
+
 		windows[i] = Window{
 			Day:        i + 1,
 			Intro:      fmt.Sprintf("/audio/%02d-intro.mp3", i+1),
 			Song:       fmt.Sprintf("/audio/%02d-song.mp3", i+1),
+			Margin:     margin,
 			IsOpenable: today >= i+1,
 		}
 	}
 
-	seed := RequestSeed(w, r)
-	personalRand := rand.New(rand.NewSource(seed))
 	ShuffleWindows(personalRand, windows)
 
 	pageData := CalendarPageData{
