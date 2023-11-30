@@ -45,6 +45,13 @@ h1 {
   hyphens: auto;
 }
 
+.calendar {
+  display: flex;
+  justify-content: space-around;
+  align-items: space-around;
+  flex-wrap: wrap;
+}
+
 .window {
   display: inline-flex;
   flex-direction: column;
