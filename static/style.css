@@ -18,6 +18,18 @@ body {
   color: var(--clr-text);
 }
 
+.snowfall {
+  position: fixed;
+  inset: 0;
+
+  pointer-events: none;
+
+  background-image: url("/static/img/snowfall.gif");
+  background-size: 640px;
+
+  z-index: 100;
+}
+
 .container {
   max-width: min(80%, 1280px);
   margin-inline: auto;
@@ -27,6 +39,10 @@ header, footer {
   font-family: GoldenGirdle;
   text-align: center;
   margin-block: 5em;
+}
+
+h1 {
+  hyphens: auto;
 }
 
 .window {
