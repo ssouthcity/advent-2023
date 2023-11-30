@@ -60,5 +60,7 @@ jobs:
           location: 'europe-central2'
 
       - name: Deploy K8s resources
-        run: |
-          kubectl apply -f k8s/
+        run: kubectl apply -f k8s/
+
+      - name: Update image version
+        run: kubectl set image deployment/advent-2023-deployment advent-2023-container=ssouthcity/advent-event-2023:${{ github.sha }}
