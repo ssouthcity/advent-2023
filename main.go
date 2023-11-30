@@ -83,7 +83,6 @@ func serveCalendar(w http.ResponseWriter, r *http.Request) {
 	}
 
 	today := time.Now().In(loc).Day()
-	today = 3
 
 	seed := RequestSeed(w, r)
 	personalRand := rand.New(rand.NewSource(seed))

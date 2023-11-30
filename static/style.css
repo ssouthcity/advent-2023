@@ -45,6 +45,10 @@ h1 {
   hyphens: auto;
 }
 
+img {
+  max-width: 100%;
+}
+
 .calendar {
   display: flex;
   justify-content: space-around;
