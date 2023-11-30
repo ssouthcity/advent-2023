@@ -2,6 +2,8 @@
 <html lang="en">
 
 <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Advent 2023</title>
   <link rel="stylesheet" href="/static/style.css" />
   <link rel="icon" type="image/x-icon" href="/static/favicon.ico" />
@@ -10,25 +12,27 @@
 </head>
 
 <body>
-  <header>
+  <header class="container">
     <h1>{{ .Title }}</h1>
   </header>
 
-  <main class="calendar">
+  <main class="container calendar">
     {{ range .Windows }}
-    <label>
+    <label title="{{ .Day }}" class="window">
       <input type="checkbox" data-day="{{ .Day }}" {{ if not .IsOpenable }}disabled{{ end }} style="display: none" />
-      <article title="{{ .Day }}" class="window">
-        <div class="door">
+      <div class="door">
+        <div class="front">
           <h2>{{ .Day }}</h2>
         </div>
-        <button data-play="{{ .Intro }}">
-          Intro
-        </button>
-        <button data-play="{{ .Song }}">
-          Song
-        </button>
-      </article>
+        <div class="back"></div>
+      </div>
+      <h2>{{ .Day }}</h2>
+      <button data-play="{{ .Intro }}" {{ if not .IsOpenable }}disabled{{ end }}>
+        Intro
+      </button>
+      <button data-play="{{ .Song }}" {{ if not .IsOpenable }}disabled{{ end }}>
+        Song
+      </button>
     </label>
     {{ end }}
   </main>
@@ -38,7 +42,7 @@
     </audio>
   </aside>
 
-  <footer>
+  <footer class="container">
     <p>Sponsored by the shadow government</p>
   </footer>
 

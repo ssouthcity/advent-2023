@@ -99,7 +99,7 @@ func serveCalendar(w http.ResponseWriter, r *http.Request) {
 	ShuffleWindows(personalRand, windows)
 
 	pageData := CalendarPageData{
-		Title:   "Hello World",
+		Title:   "Advent 2023 extravaganza",
 		Windows: windows,
 	}
 
