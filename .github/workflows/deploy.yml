@@ -47,7 +47,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - id: Authenticate to Gcloud
+      - name: Authenticate to Gcloud
         uses: 'google-github-actions/auth@v1'
         with:
           workload_identity_provider: 'projects/695182653196/locations/global/workloadIdentityPools/github/providers/advent-2023'
