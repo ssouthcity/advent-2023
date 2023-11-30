@@ -50,6 +50,7 @@ jobs:
       - name: Authenticate to Gcloud
         uses: 'google-github-actions/auth@v2'
         with:
+          project_id: 'corner-failsafe'
           workload_identity_provider: 'projects/695182653196/locations/global/workloadIdentityPools/github/providers/advent-2023'
 
       - name: Retrieve Gcloud credentials
