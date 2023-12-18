@@ -1,7 +1,0 @@
-apiVersion: networking.gke.io/v1
-kind: ManagedCertificate
-metadata:
-  name: advent-2023-cert
-spec:
-  domains:
-    - advent.southcity.dev

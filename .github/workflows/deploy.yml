@@ -47,20 +47,16 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Authenticate to Gcloud
-        uses: 'google-github-actions/auth@v2'
+      - name: Authenticate to DigitalOcean
+        uses: digitalocean/action-doctl@v2
         with:
-          project_id: 'corner-failsafe'
-          workload_identity_provider: 'projects/695182653196/locations/global/workloadIdentityPools/github/providers/advent-2023'
+          token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
 
-      - name: Retrieve Gcloud credentials
-        uses: 'google-github-actions/get-gke-credentials@v1'
-        with:
-          cluster_name: 'autopilot-cluster-1'
-          location: 'europe-central2'
+      - name: Save kubeconfig
+        run: doctl kubernetes cluster kubeconfig save --expiry-seconds 600 ${{ secrets.DIGITALOCEAN_K8S_CLUSTER_NAME }}
 
       - name: Deploy K8s resources
         run: kubectl apply -f k8s/
 
       - name: Update image version
-        run: kubectl set image deployment/advent-2023-deployment advent-2023-container=ssouthcity/advent-event-2023:${{ github.sha }}
+        run: kubectl set image deployment/advent-2023 advent-2023=ssouthcity/advent-event-2023:${{ github.sha }}
