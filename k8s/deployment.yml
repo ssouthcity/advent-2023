@@ -1,7 +1,8 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: advent-2023-deployment
+  name: advent-2023
+  namespace: advent-2023
 spec:
   replicas: 1
   selector:
@@ -13,7 +14,7 @@ spec:
         app: advent-2023
     spec:
       containers:
-        - name: advent-2023-container
+        - name: advent-2023
           image: ssouthcity/advent-event-2023:latest
           ports:
             - containerPort: 80

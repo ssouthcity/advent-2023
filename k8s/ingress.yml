@@ -2,16 +2,23 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: advent-2023
+  namespace: advent-2023
   annotations:
-    kubernetes.io/ingress.global-static-ip-name: advent-2023-ip
-    networking.gke.io/managed-certificates: advent-2023-cert
-    kubernetes.io/ingress.class: "gce"
-    networking.gke.io/v1beta1.FrontendConfig: "http-to-https"
-  labels:
-    app: advent-2023
+    cert-manager.io/issuer: letsencrypt-prod
 spec:
-  defaultBackend:
-    service:
-      name: advent-2023-service
-      port:
-        number: 8080
+  ingressClassName: nginx
+  tls:
+  - hosts:
+    - "advent2.southcity.dev"
+    secretName: letsencrypt-prod
+  rules:
+  - host: "advent2.southcity.dev"
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: advent-2023
+            port:
+              number: 8080
