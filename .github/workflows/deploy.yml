@@ -60,4 +60,4 @@ jobs:
         run: kubectl apply -f k8s/
 
       - name: Update image version
-        run: kubectl set image deployment/advent-2023 advent-2023=ssouthcity/advent-event-2023:${{ github.sha }}
+        run: kubectl -n advent-2023 set image deployment/advent-2023 advent-2023=ssouthcity/advent-event-2023:${{ github.sha }}
