@@ -9,10 +9,10 @@ spec:
   ingressClassName: nginx
   tls:
   - hosts:
-    - "advent2.southcity.dev"
+    - "advent.southcity.dev"
     secretName: letsencrypt-prod
   rules:
-  - host: "advent2.southcity.dev"
+  - host: "advent.southcity.dev"
     http:
       paths:
       - pathType: Prefix
