@@ -68,14 +68,20 @@ type CalendarPageData struct {
 
 type Window struct {
 	Day        int
-	Intro      string
-	Song       string
+	Meta       DayMeta
+	IntroPath  string
+	SongPath   string
 	Margin     string
 	IsOpenable bool
 }
 
 func serveCalendar(w http.ResponseWriter, r *http.Request) {
 	t := template.Must(template.ParseFiles("templates/index.html"))
+
+	metadata, err := parseMetaFile("metadata.toml")
+	if err != nil {
+		slog.Error("unable to parse metadata file", slog.Any("err", err))
+	}
 
 	loc, err := time.LoadLocation("Europe/Oslo")
 	if err != nil {
@@ -94,10 +100,13 @@ func serveCalendar(w http.ResponseWriter, r *http.Request) {
 			margin += fmt.Sprintf("%d%% ", side)
 		}
 
+		daymeta := metadata.Days[strconv.Itoa(i+1)]
+
 		windows[i] = Window{
 			Day:        i + 1,
-			Intro:      fmt.Sprintf("/audio/%02d-intro.mp3", i+1),
-			Song:       fmt.Sprintf("/audio/%02d-song.mp3", i+1),
+			Meta:       daymeta,
+			IntroPath:  fmt.Sprintf("/audio/%02d-intro.mp3", i+1),
+			SongPath:   fmt.Sprintf("/audio/%02d-song.mp3", i+1),
 			Margin:     margin,
 			IsOpenable: today >= i+1,
 		}

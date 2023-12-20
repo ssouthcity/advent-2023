@@ -7,6 +7,9 @@
   --clr-window-inside: linear-gradient(180deg, #00306c, #030712);
   --clr-window-back: url("/static/img/cardboard.png");
   --clr-text: #fff;
+
+  --font-special: GoldenGirdle;
+  --font-normal: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 body {
@@ -16,6 +19,10 @@ body {
 
   background-image: url("/static/img/starry-night-sky.avif");
   color: var(--clr-text);
+}
+
+img {
+  max-width: 100%;
 }
 
 .snowfall {
@@ -35,18 +42,11 @@ body {
   margin-inline: auto;
 }
 
-header, footer {
-  font-family: GoldenGirdle;
+header,
+footer {
+  font-family: var(--font-special);
   text-align: center;
   margin-block: 5em;
-}
-
-h1 {
-  hyphens: auto;
-}
-
-img {
-  max-width: 100%;
 }
 
 .calendar {
@@ -57,6 +57,16 @@ img {
 }
 
 .window {
+  --min-margin: 2em;
+
+  position: relative;
+
+  margin: var(--min-margin);
+}
+
+.window label {
+  position: relative;
+
   display: inline-flex;
   flex-direction: column;
   justify-content: center;
@@ -64,7 +74,6 @@ img {
   text-align: center;
 
   padding: 2em;
-  margin: 2em;
 
   border-width: 4px;
   border-color: var(--clr-text);
@@ -73,8 +82,48 @@ img {
 
   background: var(--clr-window-inside);
 
-  font-family: GoldenGirdle;
+  font-family: var(--font-special);
+}
 
+.popover {
+  position: absolute;
+  top: 5%;
+  right: 5%;
+  z-index: 10;
+}
+
+.popover:hover+.popover-target,
+.popover-target:hover {
+  visibility: visible;
+  opacity: 1;
+}
+
+.popover-target {
+  visibility: hidden;
+  opacity: 0;
+  transition:
+    visibility 0s,
+    opacity 100ms ease-in;
+
+  position: absolute;
+  left: calc(-1 * var(--min-margin) / 2);
+  top: 2em;
+  width: 100%;
+
+  background: var(--clr-window-inside);
+  padding: 1em;
+  border-radius: 1em;
+  border: 4px solid red;
+  border-color: var(--clr-text);
+  font-family: var(--font-normal);
+  font-size: 1em;
+  font-weight: 600;
+  text-align: left;
+
+  z-index: 100;
+}
+
+.popover-target * {
   position: relative;
 }
 
@@ -89,7 +138,7 @@ img {
   z-index: 50;
 }
 
-.door > * {
+.door>* {
   border-radius: .5em;
   position: absolute;
   inset: 0;
@@ -109,7 +158,7 @@ img {
   transform: rotateY(180deg);
 }
 
-.window input:checked + .door {
+.window input:checked+.door {
   transform: rotateY(-180deg);
 }
 
@@ -149,15 +198,15 @@ button:disabled {
 }
 
 #audio-player {
-  position: fixed; 
-  left: 0; 
-  right: 0; 
-  bottom: 0; 
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
   z-index: 9999999;
 }
 
 #audio-player audio {
-  display: block; 
+  display: block;
   width: 100%;
   background: var(--clr-window-inside);
 }
