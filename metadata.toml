@@ -4,3 +4,165 @@ description = "Snowy Snus and Jingle Jan introduces you to a new advent"
 [days.1.song]
 name = "It's the Most Wonderful Time of the Year"
 features = ["Jan"]
+
+[days.2]
+description = "Snowy Snus and Jingle Jan lament about the cold weather, brrrrr"
+
+[days.2.song]
+name = "Jingle Bell Rock"
+features = ["Snus"]
+
+[days.3]
+description = "Snowy Snus and Jingle Jan announce the first advent lottery winner when they get a surprise visit"
+
+[days.3.song]
+name = "Happy Xmas (War is Over)"
+features = ["Snus", "Jan", "Stian"]
+
+[days.4]
+description = "Snowy Snus celebrates national Santa's list day as Jan makes a callout post on X.com"
+
+[days.4.song]
+name = "Walking in a Winter Wonderland"
+features = ["Jan"]
+
+[days.5]
+description = "Snowy Snus and Jingle Jan checks out which offers the three kings bring to the cradle"
+
+[days.5.song]
+name = "Let it Snow"
+features = ["Snus"]
+
+[days.6]
+description = "Snowy Snus and Jingle Jan announce and discuss the mid-week news"
+
+[days.6.song]
+name = "White Christmas"
+features = ["Jan"]
+
+[days.7]
+description = "Snowy Snus and Jingle Jan celebrate the birthday of Noam Chomsky, the father of rizz!"
+
+[days.7.song]
+name = "Santa Baby"
+features = ["Snus"]
+
+[days.8]
+description = "Snowy Snus and Jingle Jan express excitement over the upcoming Game Awards"
+
+[days.8.song]
+name = "Grandma Got Run Over by a Reindeer"
+features = ["Erlend"]
+
+[days.9]
+description = "Snowy Snus and Jingle Jan celebrate the national day of corruption"
+
+[days.9.song]
+name = "I Saw Mommy Kissing Santa Claus"
+features = ["Stian"]
+
+[days.10]
+description = "Snowy Snus and Jingle Jan express fury over sloppy weather and draw a new lottery winner"
+
+[days.10.song]
+name = "Rockin Around the Christmas Tree"
+features = ["Christian"]
+
+[days.11]
+description = "Snowy Snus and Jingle Jan read fan-mail and find a little surprise"
+
+[days.11.song]
+name = "Santa Claus is Coming to Town"
+features = ["Snus"]
+
+[days.12]
+description = "Snowy Snus and Jingle Jan recover from yesterdays explosive turn of events, by checking in with the three kings"
+
+[days.12.song]
+name = "Sleigh Ride"
+features = ["Jan"]
+
+[days.13]
+description = "Snowy Snus and Jingle Jan investigate the mysterious mail bombing"
+
+[days.13.song]
+name = "Driving Home for Christmas"
+features = ["Stian"]
+
+[days.14]
+description = "Snowy Snus and Jingle Jan celebrate national chestnut day with a special guest from make-a-wish"
+
+[days.14.song]
+name = "Chestnuts Roasting on an Open Fire"
+features = ["Anuc", "Jan", "Snus"]
+
+[days.15]
+description = "Snowy Snus and Jingle Jan talk about strange dreams and brings on an long-distance listener"
+
+[days.15.song]
+name = "Romhjulsdrøm"
+features = ["Christian"]
+
+[days.16]
+description = "Snowy Snus and Jingle Jan reminisce the past week and invite the viewers to send in mail"
+
+[days.16.song]
+name = "Last Christmas"
+features = ["Stian"]
+
+[days.17]
+description = "Fuck it, we'll do it live! Snowy Snus and Jingle Jan host a special, extra long, potentially cancellable sending"
+
+[days.17.song]
+name = "All I Want for Christmas"
+features = ["Ken"]
+
+[days.18]
+description = "Snowy Snus and Jingle Jan apologize for yesterdays events, introduce their new soundboard, and draw yet another lotto winner"
+
+[days.18.song]
+name = "Feliz Navidad"
+features = ["Christian"]
+
+[days.19]
+description = "Snowy Snus and Jingle Jan host another Three Kings Thrift, looks like mexican is on the menu"
+
+[days.19.song]
+name = "Have Yourself a Merry Little Christmas"
+features = ["Bille9"]
+
+[days.20]
+description = "Snowy Snus retaliates after Jingle Jan gets on his nerves"
+
+[days.20.song]
+name = "Holly Jolly Christmas"
+features = ["Jan"]
+
+[days.21]
+description = ""
+
+[days.21.song]
+name = ""
+features = [""]
+
+[days.22]
+description = ""
+
+[days.22.song]
+name = ""
+features = [""]
+
+[days.23]
+description = ""
+
+[days.23.song]
+name = ""
+features = [""]
+
+[days.24]
+description = ""
+
+[days.24.song]
+name = ""
+features = [""]
+
