@@ -1,0 +1,6 @@
+[days.1]
+description = "Snowy Snus and Jingle Jan introduces you to a new advent"
+
+[days.1.song]
+name = "It's the Most Wonderful Time of the Year"
+features = ["Jan"]
