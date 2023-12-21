@@ -139,7 +139,7 @@ name = "Holly Jolly Christmas"
 features = ["Jan"]
 
 [days.21]
-description = ""
+description = "Jingle Jan receives an unpleacent"
 
 [days.21.song]
 name = ""
